@@ -11,3 +11,5 @@ TBC module for Mineplex's Minestrike minigame. Minecraft 1.8.9.
 ![Screenshot 3](/!gallery/3.png?raw=true "Screenshot #3")
 
 ![Screenshot 4](/!gallery/4.png?raw=true "Screenshot #4")
+
+![Screenshot 5](/!gallery/5.png?raw=true "Screenshot #5")
