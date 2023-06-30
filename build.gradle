@@ -1,0 +1,51 @@
+def VersionMajor = 1
+def VersionMinor = 0
+def VersionRev = 1
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url = "https://jitpack.io/" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+version = "1.8.9-${VersionMajor}.${VersionMinor}.${VersionRev}"
+
+group = "ca.slackinjack.tbc.module.ms"
+archivesBaseName = "TBCMinestrikeModule"
+
+minecraft {
+    version = "1.8.9-11.15.1.1722"
+    mappings = "stable_22"
+    makeObfSourceJar = false
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+repositories {
+    maven { url = "https://jitpack.io/" }
+}
+
+dependencies {
+    runtime files('libs/TBC-1.8.9-3.0.4.jar')
+}
